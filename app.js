@@ -1,21 +1,14 @@
 const app = document.getElementById('app');
 
-function Header() {
-	return <h1>Develop. Preview. Ship. 🚀</h1>;
+function Header({ title }) {
+	return <h1>{title ? `Let's ${title}` : 'Welcome to React Land.'}</h1>;
 }
 
-function Article() {
+function Article({ data }) {
 	return (
-		<div id='first-article'>
-			<h2 className='title'>What is Lorem Ipsum</h2>
-			<p className='content'>
-				Lorem Ipsum is simply dummy text of the printing and typesetting
-				industry. Lorem Ipsum has been the industry's standard dummy text ever
-				since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book. It has survived not only five
-				centuries, but also the leap into electronic typesetting, remaining
-				essentially unchanged.
-			</p>
+		<div id={data.id} className='article-container'>
+			<h2 className='title'>{data.title}</h2>
+			<p className='content'>{data.content}</p>
 		</div>
 	);
 }
@@ -24,11 +17,33 @@ function Footer() {
 	return <h5>Built by Gayashan with ❤️ </h5>;
 }
 
+const articles = [
+	{
+		id: 1,
+		title: 'first article',
+		content:
+			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+	},
+	{
+		id: 2,
+		title: 'second article',
+		content:
+			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+	},
+	{
+		id: 3,
+		title: 'third article',
+		content:
+			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+	},
+];
+
 function HomePage() {
 	return (
 		<>
+			<Header title='Develop. Preview. Ship. 🚀' />
 			<Header />
-			<Article />
+			<Article data={articles[0]} />
 			<Footer />
 		</>
 	);
