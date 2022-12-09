@@ -53,12 +53,24 @@ const articles = [
 ];
 
 function HomePage() {
+	const [likes, setLikes] = React.useState(0);
+
+	function handleClick() {
+		setLikes(likes + 1);
+	}
+
+	function handleResetLikes() {
+		setLikes(0);
+	}
+
 	return (
 		<>
 			<Header title='Develop. Preview. Ship. 🚀' />
 			<Header />
 			{/* <Article data={articles[0]} /> */}
 			<Articles articles={articles} />
+			<button onClick={handleClick}>Like {likes}</button>
+			<button onClick={handleResetLikes}>Reset</button>
 			<Footer />
 		</>
 	);
