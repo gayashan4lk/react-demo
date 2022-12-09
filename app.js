@@ -4,11 +4,25 @@ function Header({ title }) {
 	return <h1>{title ? `Let's ${title}` : 'Welcome to React Land.'}</h1>;
 }
 
-function Article({ data }) {
+function Article({ article }) {
 	return (
-		<div id={data.id} className='article-container'>
-			<h2 className='title'>{data.title}</h2>
-			<p className='content'>{data.content}</p>
+		<div id={article.id}>
+			<h2 className='title'>{article.title}</h2>
+			<p className='content'>{article.content}</p>
+		</div>
+	);
+}
+
+function Articles({ articles }) {
+	return (
+		<div className='article-container'>
+			<ul>
+				{articles.map((article) => (
+					<li key={article.id}>
+						<Article article={article} />
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }
@@ -43,7 +57,8 @@ function HomePage() {
 		<>
 			<Header title='Develop. Preview. Ship. 🚀' />
 			<Header />
-			<Article data={articles[0]} />
+			{/* <Article data={articles[0]} /> */}
+			<Articles articles={articles} />
 			<Footer />
 		</>
 	);
